@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lost & Found - Dashboard</title>
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Lost & Found</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active"><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#" id="findItemsLink"><i class="fas fa-search"></i> Find Items</a></li>
+                <li><a href="#" id="reportItemLink"><i class="fas fa-plus-circle"></i> Report Item</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="index.html" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a href="#" class="logout-btn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for items...">
+            </div>
+            <div class="header-user">
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <a href="index.html" class="header-login-btn"><i class="fas fa-sign-in-alt"></i> <span>Login</span></a>
+                <div class="user-profile" style="display: none;">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Profile">
+                    <span>John Doe</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <h1>Dashboard</h1>
+            <p class="welcome-message">Welcome to Lost & Found! Sign in to report or find lost items.</p>
+
+            <!-- Action Cards -->
+            <div class="action-cards">
+                <div class="action-card report">
+                    <div class="card-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Report a Missing Item</h3>
+                        <p>Lost something? Report it here and we'll help you find it.</p>
+                        <button id="reportItemBtn" class="btn primary-btn">Report Item</button>
+                    </div>
+                </div>
+                <div class="action-card find">
+                    <div class="card-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Find a Missing Item</h3>
+                        <p>Looking for something? Search our database of found items.</p>
+                        <button id="findItemBtn" class="btn secondary-btn">Find Item</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Section -->
+            <section class="categories-section">
+                <h2>Browse by Category</h2>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-tshirt"></i></div>
+                        <h4>Clothes</h4>
+                        <span class="item-count">24 items</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-id-card"></i></div>
+                        <h4>IDs</h4>
+                        <span class="item-count">37 items</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h4>Phones</h4>
+                        <span class="item-count">18 items</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-key"></i></div>
+                        <h4>Keys</h4>
+                        <span class="item-count">42 items</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-book"></i></div>
+                        <h4>Books</h4>
+                        <span class="item-count">15 items</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-laptop"></i></div>
+                        <h4>Laptops</h4>
+                        <span class="item-count">9 items</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-file-alt"></i></div>
+                        <h4>Documents</h4>
+                        <span class="item-count">31 items</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-ellipsis-h"></i></div>
+                        <h4>Others</h4>
+                        <span class="item-count">23 items</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Items Section -->
+            <section class="recent-items-section">
+                <div class="section-header">
+                    <h2>Recently Reported Items</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="items-grid">
+                    <div class="item-card">
+                        <div class="item-status lost">Lost</div>
+                        <div class="item-image">
+                            <img src="https://via.placeholder.com/150?text=Blue+Backpack" alt="Blue Backpack">
+                        </div>
+                        <div class="item-details">
+                            <h4>Blue Backpack</h4>
+                            <p class="item-location"><i class="fas fa-map-marker-alt"></i> Library, 2nd Floor</p>
+                            <p class="item-date"><i class="fas fa-calendar-alt"></i> May 15, 2023</p>
+                            <div class="item-category"><span>  May 15, 2023</p>
+                            <div class="item-category"><span>Clothes</span></div>
+                        </div>
+                    </div>
+                    <div class="item-card">
+                        <div class="item-status found">Found</div>
+                        <div class="item-image">
+                            <img src="https://via.placeholder.com/150?text=Student+ID" alt="Student ID">
+                        </div>
+                        <div class="item-details">
+                            <h4>Student ID Card</h4>
+                            <p class="item-location"><i class="fas fa-map-marker-alt"></i> Cafeteria</p>
+                            <p class="item-date"><i class="fas fa-calendar-alt"></i> May 17, 2023</p>
+                            <div class="item-category"><span>IDs</span></div>
+                        </div>
+                    </div>
+                    <div class="item-card">
+                        <div class="item-status lost">Lost</div>
+                        <div class="item-image">
+                            <img src="https://via.placeholder.com/150?text=iPhone+13" alt="iPhone 13">
+                        </div>
+                        <div class="item-details">
+                            <h4>iPhone 13 (Black)</h4>
+                            <p class="item-location"><i class="fas fa-map-marker-alt"></i> Gym Area</p>
+                            <p class="item-date"><i class="fas fa-calendar-alt"></i> May 18, 2023</p>
+                            <div class="item-category"><span>Phones</span></div>
+                        </div>
+                    </div>
+                    <div class="item-card">
+                        <div class="item-status found">Found</div>
+                        <div class="item-image">
+                            <img src="https://via.placeholder.com/150?text=Car+Keys" alt="Car Keys">
+                        </div>
+                        <div class="item-details">
+                            <h4>Car Keys (Toyota)</h4>
+                            <p class="item-location"><i class="fas fa-map-marker-alt"></i> Parking Lot B</p>
+                            <p class="item-date"><i class="fas fa-calendar-alt"></i> May 19, 2023</p>
+                            <div class="item-category"><span>Keys</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<!-- Report Item Modal -->
+<div id="reportItemModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Report a Missing Item</h2>
+            <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="reportItemForm">
+                <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" id="itemName" name="name" placeholder="e.g. Blue Backpack" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemCategory">Category</label>
+                    <select id="itemCategory" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="clothes">Clothes</option>
+                        <option value="ids">IDs</option>
+                        <option value="phones">Phones</option>
+                        <option value="keys">Keys</option>
+                        <option value="books">Books</option>
+                        <option value="laptops">Laptops</option>
+                        <option value="documents">Documents</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="itemStatus">Status</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="status" value="lost" checked> Lost (I lost this item)
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="status" value="found"> Found (I found this item)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="itemLocation">Last Seen Location</label>
+                    <input type="text" id="itemLocation" name="location" placeholder="e.g. Library, 2nd Floor" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemDate">Date</label>
+                    <input type="date" id="itemDate" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemDescription">Description</label>
+                    <textarea id="itemDescription" name="description" placeholder="Provide details about the item..." rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="itemImage">Upload Image (optional)</label>
+                    <input type="file" id="itemImage" name="image" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="contactInfo">Contact Information</label>
+                    <input type="text" id="contactInfo" name="contactInfo" placeholder="Phone number or email" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary-btn cancel-btn">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Submit Report</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Find Item Modal -->
+<div id="findItemModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Find a Missing Item</h2>
+            <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="findItemForm">
+                <div class="form-group">
+                    <label for="searchKeyword">Keyword</label>
+                    <input type="text" id="searchKeyword" name="keyword" placeholder="Search by name, description, etc.">
+                </div>
+                <div class="form-group">
+                    <label for="searchCategory">Category</label>
+                    <select id="searchCategory" name="category">
+                        <option value="">All Categories</option>
+                        <option value="clothes">Clothes</option>
+                        <option value="ids">IDs</option>
+                        <option value="phones">Phones</option>
+                        <option value="keys">Keys</option>
+                        <option value="books">Books</option>
+                        <option value="laptops">Laptops</option>
+                        <option value="documents">Documents</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchStatus">Status</label>
+                    <select id="searchStatus" name="status">
+                        <option value="">All Items</option>
+                        <option value="lost">Lost Items</option>
+                        <option value="found">Found Items</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchDateFrom">Date Range</label>
+                    <div class="date-range">
+                        <input type="date" id="searchDateFrom" name="dateFrom" placeholder="From">
+                        <span>to</span>
+                        <input type="date" id="searchDateTo" name="dateTo" placeholder="To">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="searchLocation">Location</label>
+                    <input type="text" id="searchLocation" name="location" placeholder="e.g. Library, Cafeteria">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary-btn cancel-btn">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Search Items</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/api-init.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
+
