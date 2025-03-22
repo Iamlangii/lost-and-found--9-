@@ -71,6 +71,13 @@ itemSchema.index({
   location: "text",
 })
 
+// Add additional indexes for common queries
+itemSchema.index({ user: 1 });
+itemSchema.index({ status: 1 });
+itemSchema.index({ category: 1 });
+itemSchema.index({ createdAt: -1 });
+itemSchema.index({ date: -1 });
+
 const Item = mongoose.model("Item", itemSchema)
 
 module.exports = Item

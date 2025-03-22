@@ -19,13 +19,20 @@ const itemRoutes = require("./routes/items")
 
 // Create Express app
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4000
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/lost_and_found")
+  .connect(process.env.DB_URI || "mongodb://localhost:27017/lost_and_found")
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Could not connect to MongoDB", err))
+
+// Set up mongoose connection event handlers
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => console.log('MongoDB connection established successfully'));
+db.on('disconnected', () => console.log('MongoDB disconnected'));
+db.on('reconnected', () => console.log('MongoDB reconnected'));
 
 // Middleware
 app.use(cors())
@@ -40,7 +47,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI || "mongodb://localhost:27017/lost_and_found",
+      mongoUrl: process.env.DB_URI || "mongodb://localhost:27017/lost_and_found",
       ttl: 14 * 24 * 60 * 60, // 14 days
     }),
     cookie: {
@@ -95,6 +102,38 @@ if (process.env.NODE_ENV === "production") {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack)
+  
+  // Handle MongoDB specific errors
+  if (err.name === 'MongoServerError') {
+    if (err.code === 11000) {
+      // Duplicate key error
+      return res.status(400).json({
+        success: false,
+        message: 'A record with that information already exists.',
+        error: process.env.NODE_ENV === 'development' ? err.message : undefined
+      });
+    }
+  }
+  
+  if (err.name === 'ValidationError') {
+    // Mongoose validation error
+    return res.status(400).json({
+      success: false,
+      message: 'Validation error',
+      error: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
+  }
+  
+  if (err.name === 'CastError') {
+    // Invalid ID error
+    return res.status(400).json({
+      success: false,
+      message: 'Invalid ID format',
+      error: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
+  }
+
+  // Default error response
   res.status(500).json({
     success: false,
     message: "Something went wrong!",

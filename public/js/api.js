@@ -1,7 +1,7 @@
 // API utility functions for the Lost & Found application
 
 // Base URL for API requests - automatically detect if we're in production or development
-const API_BASE_URL = window.location.hostname === "localhost" ? "http://localhost:3000/api" : "/api"
+const API_BASE_URL = window.location.hostname === "localhost" ? "http://localhost:4000/api" : "/api"
 
 // Generic fetch function with error handling
 async function fetchAPI(endpoint, options = {}) {

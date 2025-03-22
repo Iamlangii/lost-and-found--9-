@@ -72,6 +72,9 @@ const userSchema = new mongoose.Schema(
   { timestamps: true },
 )
 
+// Add indexes for better performance
+userSchema.index({ createdAt: -1 });
+
 // Pre-save hook to hash password
 userSchema.pre("save", async function (next) {
   
